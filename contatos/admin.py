@@ -3,11 +3,11 @@ from .models import Contato, Categoria
 
 
 class ContadoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nome', 'sobrenome', 'telefone', 'email', 'data_criacao')
-    list_display_links = ('id', 'nome', 'sobrenome', 'telefone', 'email')
+    list_display = ('id', 'nome', 'sobrenome', 'telefone', 'email', 'data_criacao', 'mostrar')
+    list_display_links = ('id', 'nome', 'sobrenome', 'email')
     list_per_page = 10
-    ordering = ('nome',)
-    search_fields = ('id', 'nome', 'sobrenome', 'telefone', 'email', 'data_criacao')
+    search_fields = ('nome', 'sobrenome', 'telefone', 'email', 'data_criacao')
+    list_editable = ('telefone', 'mostrar',)
 
 
 admin.site.register(Categoria)
