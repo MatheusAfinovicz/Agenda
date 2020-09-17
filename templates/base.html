@@ -27,10 +27,12 @@
                      id="search-input"
                      placeholder="Pesquise pelo nome ou telefone desejado"
                      name="termo">
+
+              {% include 'parciais/_messages.html' %}
+
             </div>
           </div>
         </form>
-
           {%block conteudo%} {%endblock%}
       </div>
     </div>
