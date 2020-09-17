@@ -14,6 +14,7 @@ class Contato(models.Model):
     sobrenome = models.CharField(max_length=250, blank=True)
     telefone = models.CharField(max_length=250)
     email = models.CharField(max_length=250, blank=True)
+    foto = models.ImageField(blank=True, upload_to='foto/%Y/%m')
     data_criacao = models.DateTimeField(default=timezone.now)
     descricao = models.TextField(blank=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING)
