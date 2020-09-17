@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    <h1 class="mb-3, mt-3">Cadastro</h1>
+    <form method="POST", action="{% url 'cadastro' %}">
+        {% include 'parciais/_messages.html' %}
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label>Nome</label>
+            <input type="text" class="form-control" value="{{ request.POST.nome }}" name="nome">
+        </div>
+
+        <div class="form-group">
+            <label>Sobrenome</label>
+            <input type="text" class="form-control" value="{{ request.POST.sobrenome }}"  name="sobrenome">
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" value="{{ request.POST.email }}"  name="email">
+        </div>
+
+        <div class="form-group">
+            <label>Usuário</label>
+            <input type="text" class="form-control" value="{{ request.POST.usuario }}"
+                   placeholder="Não pode conter espaços" name="usuario">
+        </div>
+
+        <div class="form-group">
+            <label>Senha</label>
+            <input type="password" class="form-control" placeholder="Mínimo de 6 caracteres" name="senha">
+        </div>
+
+        <div class="form-group">
+            <label>Repita a enha</label>
+            <input type="password" class="form-control" name="senha2">
+        </div>
+
+      <button type="submit" class="btn btn-primary">Cadastrar-me</button>
+    </form>
+{% endblock %}

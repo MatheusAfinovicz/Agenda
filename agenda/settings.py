@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'contatos.apps.ContatosConfig'
+    'contatos.apps.ContatosConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -134,7 +135,7 @@ MEDIA_URL = 'media/'
 MESSAGE_TAGS = {
     constants.ERROR: 'alert-danger',
     constants.INFO: 'alert-info',
-    constants.SUCCESS: 'alert-sucess',
+    constants.SUCCESS: 'alert-success',
     constants.WARNING: 'alert-warning',
     constants.DEBUG: 'alert-info',
 }
