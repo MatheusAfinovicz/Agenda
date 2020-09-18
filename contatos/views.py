@@ -34,7 +34,7 @@ def ver_contato(request, contato_id):
 def busca(request):
     termo = request.GET.get('termo')
 
-    if termo is None or not termo:
+    if termo is None or not termo or termo == len(termo) * ' ':
         messages.add_message(request, messages.ERROR, 'A busca não pode ser vazia')
         return redirect('index')
 
