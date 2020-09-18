@@ -46,8 +46,8 @@ def cadastro(request):
 
     try:
         validate_email(email)
-    except Exception as error:
-        messages.error(request, f'Email inválido, {error}')
+    except:
+        messages.error(request, f'Email inválido')
         return render(request, 'accounts/cadastro.html')
 
     if ' ' in usuario:
