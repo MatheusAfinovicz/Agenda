@@ -3,6 +3,7 @@ from django.contrib import messages, auth
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from .models import FormContato
 
 
 def login(request):
@@ -84,4 +85,34 @@ def cadastro(request):
 
 @login_required(redirect_field_name='login')
 def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+    if request.method != 'POST':
+        form = FormContato()
+        return render(request, 'accounts/dashboard.html', {'form': form})
+
+    form = FormContato(request.POST, request.FILES)
+    if not form.is_valid():
+        messages.error(request, 'Erro ao enviar formulário.')
+        form = FormContato(request.POST)
+        return render(request, 'accounts/dashboard.html', {'form': form})
+
+    telefone = request.POST.get('telefone')
+    email = request.POST.get('email')
+
+    if len(telefone) < 10:
+        messages.error(request, 'Telefone deve ser preenchido com DDD e no mínimo mais 8 números.')
+        form = FormContato(request.POST)
+        return render(request, 'accounts/dashboard.html', {'form': form})
+
+    try:
+        validate_email(email)
+    except:
+        messages.error(request, f'Email inválido')
+        return render(request, 'accounts/dashboard.html', {'form': form})
+
+    if User.objects.filter(email=email).exists():
+        messages.error(request, 'Email já cadastrado.')
+        return render(request, 'accounts/dashboard.html', {'form': form})
+
+    form.save()
+    messages.success(request, f'Contato {request.POST.get("nome")} {request.POST.get("sobrenome")} criado com sucesso.')
+    return redirect('dashboard')
