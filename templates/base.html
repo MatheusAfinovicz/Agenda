@@ -21,7 +21,15 @@
         <br><br>
 
         {% if 'accounts' not in request.path %}
-          <form method="get" action="{% url 'busca' %}">
+          <div style="font-size: 150%">
+            <p>Crie novo contatos com uma conta!</p>
+            <div class="container" style="display: flex">
+              <a href="{%url 'login'%}">Login</a>
+              <a href="{%url 'cadastro'%}" style="margin-left: auto">Cadastre-se</a>
+            </div>
+          </div>
+          {% include 'parciais/_messages.html' %}
+          <form method="get" action="{% url 'busca' %}" style="margin: 2% 0">
             <div class="form-group row">
               <div class="col-12">
                 <input class="form-control"
@@ -29,7 +37,6 @@
                        id="search-input"
                        placeholder="Pesquise pelo nome ou telefone desejado"
                        name="termo">
-                {% include 'parciais/_messages.html' %}
               </div>
             </div>
           </form>

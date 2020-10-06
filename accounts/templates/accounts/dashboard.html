@@ -3,21 +3,20 @@
 {% block titulo %}Painel de {{user.first_name}} | {% endblock %}
 
 {% block conteudo %}
-
+    <h1>Olá {{ user.first_name }} {{ user.last_name }}.</h1>
+    <div class="container" style="display: flex; font-size: 150%">
+        Adicione novos contatos através do formulário abaixo!
+        <a href="{% url 'logout'%}" style="margin-left: 40%">logout</a>
+    </div>
     {% include 'parciais/_messages.html' %}
-    <h1 class="mb-3, mt-3">Olá {{ user.first_name }} {{ user.last_name }}.</h1>
-    <br>
-    <h3 class="mb-3, mt-3">Adicione novos contatos através do formulário abaixo!</h3>
-    <br>
-
-    <div class="container">
+    <div class="container" style="font-size: 120%">
         <form action="{%url 'dashboard'%}" method="POST" enctype="multipart/form-data">
             {%csrf_token%}
             <table class="table">
                 {{ form }}
                 <tr>
                     <td colspan="2">
-                        <button type="submit" class="btn btn-primary">Criar</button>
+                        <button type="submit" class="btn btn-primary" style="font-size: 110%">Criar</button>
                     </td>
                 </tr>
             </table>

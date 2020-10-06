@@ -3,33 +3,38 @@
 {% block titulo %}Login | {% endblock %}
 
 {% block conteudo %}
-    <h1 class="mb-3, mt-3">Login</h1>
+    <h1 class="mb-3, mt-3" style="margin-bottom: 2%">Login</h1>
 
     {% if not user.is_authenticated %}
     <form method="POST" action="{% url 'login' %}">
         {% include 'parciais/_messages.html' %}
         {% csrf_token %}
 
-        <div class="form-group">
+        <div class="form-group" style="font-size: 200%">
             <label>Usuário</label>
             <input type="text" class="form-control" value="{{ request.POST.usuario }}"
-                   placeholder="Não pode conter espaços" name="usuario">
+                   placeholder="Insira seu usuário" name="usuario">
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="font-size: 200%">
             <label>Senha</label>
-            <input type="password" class="form-control" placeholder="Mínimo de 6 caracteres" name="senha">
+            <input type="password" class="form-control" placeholder="Insira sua senha" name="senha">
         </div>
 
-      <button type="submit" class="btn btn-primary">Login</button>
+      <div class="container" style="display: flex; margin-top: 2%">
+        <button type="submit" class="btn btn-primary" style="font-size: 130%">Login</button>
+        <div class="text" style="margin-left: 50%; margin-top: 2%; font-size: 130%">
+            Caso ainda não tenha uma conta, crie<a href="{%url 'cadastro'%}"> aqui</a>
+        </div>
+      </div>
     </form>
 
     {% else %}
-
-        Você já está logado {{user.first_name}},<br>
-        <a href="{% url 'dashboard'%}">Clique aqui</a> para acessar seu painel ou
-        <a href="{% url 'logout'%}">aqui</a> para deslogar seu usuário.
-
+        <div class="container" style="font-size: 130%">
+            Você já está logado {{user.first_name}},<br>
+            <a href="{% url 'dashboard'%}">Clique aqui</a> para acessar seu painel ou
+            <a href="{% url 'logout'%}">aqui</a> para deslogar seu usuário.
+        </div>
     {% endif %}
 
 {% endblock %}
