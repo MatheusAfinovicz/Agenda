@@ -26,7 +26,7 @@ brew install python3.8
 
 ### Criando e Ativando Ambiente Virtual
 
-Para criar, na pasta raiz do projeto:
+Para criar, na pasta raíz do projeto:
 
 ```console
 virtualenv venv
