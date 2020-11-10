@@ -20,7 +20,9 @@ sudo apt-get install python3.8 && sudo apt-get install python-pip
 brew install python3.8
 ```
 
-Windows - <a href="https://www.python.org/ftp/python/3.8.3/python-3.8.3.exe">Downlaod x86</a>, <a href="https://www.python.org/ftp/python/3.8.3/python-3.8.3-amd64.exe">Download x86-64</a>
+• Windows
+
+<a href="https://www.python.org/ftp/python/3.8.3/python-3.8.3.exe">Downlaod x86</a>, <a href="https://www.python.org/ftp/python/3.8.3/python-3.8.3-amd64.exe">Download x86-64</a>
 
 
 ### Instalando dependencias
@@ -37,7 +39,21 @@ pip3 install -r requirements.txt
 
 ### Iniciar script
 
-Ao entrar na pasta raíz do projeto, através do terminal, digitar:
+Ao entrar na pasta raíz do projeto, ativar o o venv:
+
+• Windows
+
+```console
+venv\Scripts\activate
+```
+
+• Linux ou MacOS
+
+```console
+source venv/bin/activate
+```
+
+Rodando o servidor:
 
 ```console
 python manage.py runserver
