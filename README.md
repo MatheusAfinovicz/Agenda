@@ -24,22 +24,15 @@ brew install python3.8
 
 <a href="https://www.python.org/ftp/python/3.8.3/python-3.8.3.exe">Downlaod x86</a>, <a href="https://www.python.org/ftp/python/3.8.3/python-3.8.3-amd64.exe">Download x86-64</a>
 
+### Criando e Ativando Ambiente Virtual
 
-### Instalando dependencias
-
-```console
-pip install -r requirements.txt
-```
-
-ou
+Para criar, na pasta raiz do projeto:
 
 ```console
-pip3 install -r requirements.txt
+virtualenv venv
 ```
 
-### Iniciar script
-
-Ao entrar na pasta raíz do projeto, ativar o o venv:
+Para ativá-lo:
 
 • Windows
 
@@ -53,7 +46,19 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-Rodando o servidor:
+### Instalando dependencias
+
+```console
+pip install -r requirements.txt
+```
+
+ou
+
+```console
+pip3 install -r requirements.txt
+```
+
+### Iniciar servidor
 
 ```console
 python manage.py runserver
