@@ -4,10 +4,13 @@ from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import FormContato
+from .functions import check_request_method_is_post
 
 
 def login(request):
-    if request.method != 'POST':
+    if check_request_method_is_post(request.method):
+        pass
+    else:
         return render(request, 'accounts/login.html')
 
     usuario = request.POST.get('usuario')
