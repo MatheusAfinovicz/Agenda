@@ -1,30 +1,25 @@
-from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import FormContato
-from .functions import check_request_method_is_post
+from accounts.Views_functions.login_functions import check_request_method_is_post, check_user_exists
+from django.shortcuts import render, redirect
 
 
 def login(request):
     if check_request_method_is_post(request.method):
         pass
     else:
+        messages.error(request, 'Algo não saiu como o esperado, tente novamente.')
         return render(request, 'accounts/login.html')
 
-    usuario = request.POST.get('usuario')
-    senha = request.POST.get('senha')
-
-    user = auth.authenticate(request, username=usuario, password=senha)
-
-    if not user:
-        messages.error(request, 'Usuário ou senha inválidos')
-        return render(request, 'accounts/login.html')
-    else:
-        auth.login(request, user)
+    if check_user_exists(request):
         messages.success(request, 'Logado com sucesso.')
         return redirect('dashboard')
+    else:
+        messages.error(request, 'Usuário ou senha inválidos')
+        return render(request, 'accounts/login.html')
 
 
 def logout(request):
