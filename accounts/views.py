@@ -11,7 +11,6 @@ def login(request):
     if check_request_method_is_post(request.method):
         pass
     else:
-        messages.error(request, 'Algo não saiu como o esperado, tente novamente.')
         return render(request, 'accounts/login.html')
 
     if check_user_exists(request):

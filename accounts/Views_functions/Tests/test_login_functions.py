@@ -1,8 +1,9 @@
 from django.test import TestCase
-from accounts.Views_functions.login_functions import check_request_method_is_post, check_user_exists
+from accounts.Views_functions.login_functions import check_request_method_is_post
 
 
-class RequestMethodTestCase(TestCase):
+class CheckRequestMethodTestCase(TestCase):
+
     def test_login_method_is_not_post(self):
         methods = ['GET', 'HEAD', 'PUT', 'DELETE']
         for method in methods:
